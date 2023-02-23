@@ -1,14 +1,17 @@
 const express = require('express');
+const Campsite = require('../models/campsite');
+
 const campsiteRouter = express.Router();
 
 campsiteRouter.route('/')
-.all((req, res, next) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  next();
-})
-.get((req, res) => {
-  res.end('Will send all the campsites to you');
+.get((req, res, next) => {
+  Campsite.find()
+  .then(campsites => {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'application/json');
+    res.json(campsites);
+  })
+  .catch(err => next(err));
 })
 .post((req, res) => {
   res.end(`Will add the campsite: ${req.body.name} with description: ${req.body.description}`);
