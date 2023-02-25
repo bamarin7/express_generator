@@ -54,8 +54,7 @@ partnerRouter.route('/:partnerId')
 })
 .put((req, res, next) => {
   Partner.findByIdAndUpdate(req.params.partnerId, {
-    $set: req.body.name,
-    $set: req.body.description
+    $set: req.body
   }, { new: true })
   .then(partner => {
     res.statusCode = 200;
