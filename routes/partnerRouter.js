@@ -1,11 +1,11 @@
 const express = require('express');
-// const bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 const Partner = require('../models/partner');
 const authenticate = require('../authenticate');
 
 const partnerRouter = express.Router();
 
-// partnerRouter.use(bodyParser.json());
+partnerRouter.use(bodyParser.json());
 
 partnerRouter.route('/')
 .get((req, res, next) => {
