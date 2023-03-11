@@ -128,4 +128,4 @@ favoriteRouter.route('/:campsiteId')
   .catch(err => next(err));
 });
 
-modules.exports = favoriteRouter;
+module.exports = favoriteRouter;
